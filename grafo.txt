@@ -1,0 +1,44 @@
+#include <iostream>
+#include "Grafo.cpp" 
+
+int main() 
+{
+Grafo<int> grafo;
+
+grafo.aggiungiNodo(Gianluca);
+grafo.aggiungiNodo(Marco);
+grafo.aggiungiNodo(Federico);
+grafo.aggiungiNodo(Nicole);
+grafo.aggiungiNodo(Licia);
+
+grafo.aggiungiArco(Gianluca, Marco, Federico);
+grafo.aggiungiArco(Gianluca, Federico, Licia);
+grafo.aggiungiArco(Marco, Federico, Nicole);
+grafo.aggiungiArco(Federico, Licia, Nicole);
+grafo.aggiungiArco(Nicole, Licia, Raffaele);
+grafo.aggiungiArco(Gianluca, Marco, Nicole);
+
+grafo.stampa();
+
+std::cout << "Esiste il nodo Federico? " <<(grafo.verificaNodo(Federico) ? "Sì" : "No")<< std::endl;
+
+std::cout << "Esiste un arco tra Gianluca e Marco? " <<(grafo.verificaArco(Gianluca, Marco) ? "Sì" : "No")<< std::endl;
+std::cout << "Esiste un arco tra Gianluca e Nicole? " <<(grafo.verificaArco(Gianluca, Nicole) ? "Sì" : "No")<< std::endl;
+
+grafo.nodiAdiacenti(Gianluca);
+
+grafo.rimuoviArco(Gianluca, Marco);
+std::cout <<"Matrice di Adiacenza dopo la rimozione dell'arco tra Gianluca e Marco:"<< std::endl;
+grafo.stampa();
+
+grafo.rimuoviNodo(Federico);
+std::cout <<"Matrice di Adiacenza dopo la rimozione del nodo Federico:"<< std::endl;
+grafo.stampa();
+
+grafo.aggiungiNodo(Raffaele);
+grafo.aggiungiArco(Nicole, Licia, Raffaele);
+std::cout <<"Matrice di adiacenza dopo l'aggiunta del nodo Raffaele e dell'arco tra Licia e Raffaele:"<< std::endl;
+grafo.stampa();
+
+return 0;
+}
